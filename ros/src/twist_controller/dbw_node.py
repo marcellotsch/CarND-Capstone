@@ -83,6 +83,8 @@ class DBWNode(object):
             	#throttle, brake, steering = self.controller.control(20.0, 0.0, self.current_velocity, self.twist_cmd, self.vehicle_dbw_enabled)
             	#self.publish(throttle, brake, steering)
 
+            	#throttle, brake, steering = self.controller.control()
+            	self.publish(1.0, 0.0, 0.0)
 
             rate.sleep()
 
