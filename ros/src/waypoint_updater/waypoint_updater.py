@@ -49,7 +49,10 @@ class WaypointUpdater(object):
 
     def pose_cb(self, msg):
 
-    		# Lane object (node output)
+        while(len(self.waypoints_data)==0):
+          rospy.wait_for_message('/base_waypoints',Lane)
+
+        # Lane object (node output)
         myLane = Lane()
 
         # Current vehicle position
