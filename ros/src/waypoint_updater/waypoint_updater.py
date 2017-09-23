@@ -63,12 +63,12 @@ class WaypointUpdater(object):
         min_dist = 9999999
         nearest_index = -1
         for i in range(len(self.waypoints_data)):
-        	pos_x = self.waypoints_data[i].pose.pose.position.x
-        	pos_y = self.waypoints_data[i].pose.pose.position.y
-        	if (self.dst(pos_x, pos_y, current_x, current_y) < min_dist):
-        		min_dist = self.dst(pos_x, pos_y, current_x, current_y)
-        		nearest_index = i
-        		#print("min_dist ", min_dist) # just for debugging
+            pos_x = self.waypoints_data[i].pose.pose.position.x
+            pos_y = self.waypoints_data[i].pose.pose.position.y
+            if (self.dst(pos_x, pos_y, current_x, current_y) < min_dist):
+                min_dist = self.dst(pos_x, pos_y, current_x, current_y)
+                nearest_index = i
+                #print("min_dist ", min_dist) # just for debugging
 
         # Nearest waypoint could also lie behind the car... if so: consider the next waypoint in line
         increase_index = False
@@ -77,10 +77,10 @@ class WaypointUpdater(object):
         nearest_next_x = self.waypoints_data[nearest_index+1].pose.pose.position.x
         nearest_next_y = self.waypoints_data[nearest_index+1].pose.pose.position.y
         if (((nearest_next_x-nearest_x>0.0) and (current_x>nearest_x)) or ((nearest_next_y-nearest_y>0.0) and (current_y>nearest_y)) or
-        	((nearest_next_x-nearest_x<0.0) and (current_x<nearest_x)) or ((nearest_next_y-nearest_y<0.0) and (current_y<nearest_y))):
-        	increase_index = True
+            ((nearest_next_x-nearest_x<0.0) and (current_x<nearest_x)) or ((nearest_next_y-nearest_y<0.0) and (current_y<nearest_y))):
+            increase_index = True
         if (increase_index):
-        	nearest_index+=1
+            nearest_index+=1
 
         # Provide info to lane object; ensure not to exceed max index of waypoints_data
         myLane.waypoints = self.waypoints_data[nearest_index:min(nearest_index+LOOKAHEAD_WPS,len(self.waypoints_data)-nearest_index-1)]
@@ -119,7 +119,7 @@ class WaypointUpdater(object):
         return dist
 
     def dst(self, x1, y1, x2, y2):
-    		# Calculate distance between two points
+            # Calculate distance between two points
         dist = math.sqrt((x1 - x2)*(x1 - x2) + (y1 - y2)*(y1 - y2))
         return dist
 
