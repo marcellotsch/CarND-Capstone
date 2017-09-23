@@ -1,4 +1,5 @@
 from math import atan
+from math import fabs
 
 class YawController(object):
     def __init__(self, wheel_base, steer_ratio, min_speed, max_lat_accel, max_steer_angle):
@@ -12,7 +13,7 @@ class YawController(object):
 
 
     def get_angle(self, radius):
-        if math.fabs(radius) < 0.0001:
+        if fabs(radius) < 0.0001:
             return 0.0
         else:
             angle = atan(self.wheel_base / radius) * self.steer_ratio
