@@ -84,9 +84,9 @@ class DBWNode(object):
             if (self.vehicle_dbw_enabled):
             	if (self.current_velocity != None):
             		# TODO: Get values from controller
-            	throttle, brake, steering = self.controller.control(self.current_velocity, self.vehicle_dbw_enabled, self.twist_cmd)
-            	self.publish(throttle, brake, steering)
-            	#self.publish(1.0, 0.0, 0.0)
+            		throttle, brake, steering = self.controller.control(self.current_velocity, self.vehicle_dbw_enabled, self.twist_cmd)
+            		self.publish(throttle, brake, steering)
+            		#self.publish(1.0, 0.0, 0.0)
 
             rate.sleep()
 
