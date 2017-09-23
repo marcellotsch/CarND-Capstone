@@ -63,6 +63,8 @@ class DBWNode(object):
         rospy.Subscriber('/vehicle/dbw_enabled', Bool, self.vehicle_dbw_enabled_cb, queue_size=1)
 
         self.vehicle_dbw_enabled = False
+        self.current_velocity = None
+        self.twist_cmd = None
 
         self.loop()
 
@@ -80,8 +82,9 @@ class DBWNode(object):
             #   self.publish(throttle, brake, steer)
 
             if (self.vehicle_dbw_enabled):
-            	# TODO: Get values from controller
-            	throttle, brake, steering = self.controller.control()
+            	if (self.current_velocity != None):
+            		# TODO: Get values from controller
+            	throttle, brake, steering = self.controller.control(self.current_velocity, self.vehicle_dbw_enabled, self.twist_cmd)
             	self.publish(throttle, brake, steering)
             	#self.publish(1.0, 0.0, 0.0)
 
