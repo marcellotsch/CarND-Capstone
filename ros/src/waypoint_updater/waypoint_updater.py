@@ -50,7 +50,7 @@ class WaypointUpdater(object):
     def pose_cb(self, msg):
 
         while(len(self.waypoints_data)==0):
-          rospy.wait_for_message('/base_waypoints',Lane)
+            rospy.wait_for_message('/base_waypoints',Lane)
 
         # Lane object (node output)
         myLane = Lane()
@@ -90,7 +90,7 @@ class WaypointUpdater(object):
         #print("current_x | current_y =", current_x, " | ", current_y)
         #print("min_dist = ", min_dist)
         #print("waypoints_data[nearest_index].x ", self.waypoints_data[nearest_index].pose.pose.position.x)
-        #print("myLane.waypoints = ", myLane.waypoints)
+        print("myLane.waypoints = ", myLane.waypoints)
 
 
     def waypoints_cb(self, waypoints):
