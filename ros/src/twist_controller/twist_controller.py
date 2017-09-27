@@ -17,7 +17,7 @@ class Controller(object):
     	self.error_filter  = LowPassFilter(0.5, 0.1)
     	self.steering_filter = LowPassFilter(0.5, 0.1)
 
-    	self.steering_PID = PID(8.0, 0.2, 1.0)
+    	self.steering_PID = PID(8.0, 0.2, 1.0) #8.0, 0.2, 1.0
 
 
     def control(self, current_velocity, vehicle_dbw_enabled, twist_cmd):
